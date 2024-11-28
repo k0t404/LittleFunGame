@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5ga7xig3v3u3"]
+[gd_scene load_steps=7 format=3 uid="uid://b5ga7xig3v3u3"]
 
 [ext_resource type="Script" path="res://character_body_3d.gd" id="1_60nj2"]
+[ext_resource type="PackedScene" uid="uid://b30ixkuxt6udl" path="res://male_char/scene.gltf" id="2_vommp"]
 
 [sub_resource type="Environment" id="Environment_okxo7"]
 background_mode = 2
@@ -9,6 +10,8 @@ tonemap_mode = 3
 tonemap_exposure = 6.01
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nljce"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pt1na"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_adpyr"]
 
@@ -32,6 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0844049, 0, -11.3353)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 size = Vector3(23.2131, 1, 18.9423)
+material = SubResource("ShaderMaterial_pt1na")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00539, 2.86153, -4.91147)
@@ -40,5 +44,5 @@ script = ExtResource("1_60nj2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_adpyr")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("CapsuleShape3D_adpyr")
+[node name="Sketchfab_Scene" parent="CharacterBody3D" instance=ExtResource("2_vommp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99525, -2.86153, -8.32974)
